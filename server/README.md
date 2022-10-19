@@ -1,5 +1,7 @@
 # Express TODO Demo
 
+Originally created by [Navx2810](https://github.com/navx2810)
+
 ## Configuration
 
 To setup the demo, clone this repository and follow these steps:
@@ -8,9 +10,8 @@ To setup the demo, clone this repository and follow these steps:
 2. Copy the `.env.example` file to a `.env` file.
 3. Change the values in the `.env` file to suit your needs.
 4. With a terminal opened in the same directory, run the following commands:
-4a. `npm i`
-4b. `npx prisma init`
-4c. `npx prisma db push`
+   - `npm i`
+   - `npx prisma db push`
 
 You can now spin up your app by running `npm run start`.
 
