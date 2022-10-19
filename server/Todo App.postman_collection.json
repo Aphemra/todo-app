@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "c46e7e9d-1d7a-442b-be60-c76d6cecd7c4",
+		"name": "Todo App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nickname",
+							"value": "navx",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/account/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nickname",
+							"value": "navx",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/account/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "content",
+							"value": "Here's another task I have to do",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Off Task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "task",
+							"value": "cl9d1j1pk0000f5vt83rld3qm",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "task",
+							"value": "cl9d0vtlv0000f5lv28vvzdg4",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJpYXQiOjE2NjYwMjYzNzYsImV4cCI6MTY2NjAyNjQzNiwiaXNzIjoiVGhlIFNlcnZlciDwn5iCIn0.onOtyUIqLAJiioRBQNEtvJSIuWHtGteTpett1wmCqck",
+			"type": "default"
+		}
+	]
+}
