@@ -1,0 +1,11 @@
+import axios from "axios";
+
+const api = axios.create({
+	baseURL: process.env.REACT_APP_SERVER_URL,
+});
+
+export function makeRequest(url, options) {
+	return api(url, options)
+		.then((response) => response.data)
+		.catch((error) => Promise.reject(error?.response?.data?.message ?? "Client-side Error."));
+}
