@@ -1,8 +1,11 @@
 require("dotenv").config()
 const app = require("express")()
 
+const { prisma } = require("@prisma/client")
+const cors = require("cors")
 const bodyParser = require("body-parser")
 
+app.use(cors())
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 

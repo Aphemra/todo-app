@@ -5,7 +5,13 @@ const api = axios.create({
 });
 
 export function makeRequest(url, options) {
-	return api(url, options)
+	const config = {
+		headers: {
+			Authorization: `Bearer ${options.token}`,
+		},
+	};
+
+	return api(url, config)
 		.then((response) => response.data)
 		.catch((error) => Promise.reject(error?.response?.data?.message ?? "Client-side Error."));
 }
