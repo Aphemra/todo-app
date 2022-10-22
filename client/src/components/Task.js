@@ -5,7 +5,7 @@ async function checkTask(options) {
 	return axios
 		.put(
 			`${process.env.REACT_APP_SERVER_URL}/tasks`,
-			{ task: options.task.id },
+			{ taskId: options.task.id },
 			{
 				headers: {
 					"Content-Type": "application/json",
