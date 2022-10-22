@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTasks } from "../services/tasks";
+import { Task } from "./Task";
 
 export function TaskList({ token }) {
 	const [tasks, setTasks] = useState([]);
@@ -13,14 +14,7 @@ export function TaskList({ token }) {
 		<h1>
 			{tasks.length > 0
 				? tasks.map((task, index) => {
-						return (
-							<div key={task.id}>
-								<h3 style={{ marginBottom: "0px", paddingBottom: "0px" }}>{`Task ${index + 1}`}</h3>
-								<p style={{ marginTop: "0px", marginBottom: "0px", fontSize: "24px" }}>{task.content}</p>
-								<p style={{ fontSize: "16px" }}>{task.done ? "Task Complete" : "Task Incomplete"}</p>
-								<hr />
-							</div>
-						);
+						return <Task key={task.id} task={task} index={index} token={token} />;
 				  })
 				: ""}
 		</h1>

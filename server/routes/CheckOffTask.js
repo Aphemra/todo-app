@@ -13,31 +13,30 @@ module.exports = [
 	async (req, res, next) => {
 		const { task } = req.body
 		const found = await db.task.findUnique({
-            where: {
-                id: task
-            }
-        })
+			where: {
+				id: task,
+			},
+		})
 		if (!found) {
-            return next(new y.ValidationError("Failed to find the provided task.", task))
+			return next(new y.ValidationError("Failed to find the provided task.", task))
 		} else if (found.accountId != req.user) {
-            return next(new y.ValidationError("Failed to fetch resource.", task))
-        }
+			return next(new y.ValidationError("Failed to fetch resource.", task))
+		}
 
-        const resp = await db.task.update({
-            where: {
-                id: task
-            },
-            data: {
-                done: !found.done
-            },
-            select: {
-                id: true,
-                content: true,
-                done: true
-            }
-        })
-        
+		const resp = await db.task.update({
+			where: {
+				id: task,
+			},
+			data: {
+				done: !found.done,
+			},
+			select: {
+				id: true,
+				content: true,
+				done: true,
+			},
+		})
 
-        return res.json(resp)
+		return res.json(resp)
 	},
 ]
