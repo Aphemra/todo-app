@@ -14,6 +14,7 @@
 	--highlight: rgb(141, 136, 221, 0.8);
 	--highlight-alpha: rgba(141, 136, 221, 0.5);
 	--highlight-dark: rgb(96, 92, 161, 0.5);
+	--background: rgb(35, 39, 42);
 }
 
 .hide,
@@ -27,7 +28,7 @@
 
 .app {
 	padding: 2rem;
-	background-color: rgb(35, 39, 42);
+	background-color: var(--background);
 	height: 100vh;
 	background-image: url("/src/images/bg.png");
 	background-size: 100vw;
@@ -38,8 +39,10 @@
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
+	margin-top: 12rem;
 	width: 18rem;
-	padding-top: 12rem;
+	border-radius: 0.75rem 0.75rem 0 0;
+	box-shadow: 0 0 25px 5px var(--background);
 }
 
 .tab-nav {
@@ -49,7 +52,7 @@
 
 .tab {
 	padding: 0.25rem 0.5rem;
-	border: 2px solid black;
+	border: 2px solid var(--background);
 	font-size: 0.75rem;
 	width: 9rem;
 	text-align: center;
@@ -87,7 +90,7 @@
 .tab-content {
 	width: 100%;
 	padding: 1rem;
-	border: 2px solid black;
+	border: 2px solid var(--background);
 	border-top: none;
 	background-color: rgba(189, 189, 189, 0.09);
 	color: white;
@@ -130,7 +133,7 @@
 .submit input {
 	width: 8rem;
 	font-size: 1rem;
-	border: 2px solid white;
+	border: 2px solid var(--background);
 	border-radius: 0.5rem;
 	cursor: pointer;
 	-webkit-user-select: none;
@@ -138,7 +141,7 @@
 }
 
 .submit input:hover {
-	background-color: var(--highlight);
+	background-color: var(--highlight-alpha);
 }
 
 .submit input:active {

@@ -9,7 +9,10 @@ export function TaskList() {
 	const [content, setContent] = useState("");
 
 	useEffect(() => {
-		if (!token) return;
+		if (!token) {
+			setTasks([]);
+			return;
+		}
 		getTasks({ token }).then(setTasks);
 	}, [token]);
 
@@ -34,7 +37,7 @@ export function TaskList() {
 					? tasks.map((task, index) => {
 							return <Task key={task.id} task={task} index={index} setTasks={setTasks} />;
 					  })
-					: ""}
+					: "Loading..."}
 			</div>
 		</div>
 	);
