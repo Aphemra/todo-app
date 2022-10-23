@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToken, useUpdateToken } from "../contexts/TokenContext";
 import useLocalState from "../hooks/useLocalState";
-import { login } from "../services/api";
+import { login, createAccount } from "../services/api";
 
 export function Login() {
 	const [nickname, setNickname] = useLocalState("nickname");
@@ -18,6 +18,15 @@ export function Login() {
 		setToken(token?.token || null);
 	};
 
+	const handleCreateAccount = async (event) => {
+		event.preventDefault();
+		const token = await createAccount({
+			nickname,
+			password,
+		});
+		setToken(token?.token || null);
+	};
+
 	const handleLogOut = () => {
 		setToken(null);
 		setNickname(null);
@@ -26,7 +35,22 @@ export function Login() {
 	return (
 		<div>
 			<h1>{token ? `Logged in as ${nickname}.` : "Logged out."}</h1>
+			<h2>Log in</h2>
 			<form onSubmit={handleLogIn}>
+				<div>
+					<label>Username: </label>
+					<input type="text" onChange={(event) => setNickname(event.target.value)} />
+				</div>
+				<div>
+					<label>Password: </label>
+					<input type="password" onChange={(event) => setPassword(event.target.value)} />
+				</div>
+				<div>
+					<input type="submit" />
+				</div>
+			</form>
+			<h2>Create New Account</h2>
+			<form onSubmit={handleCreateAccount}>
 				<div>
 					<label>Username: </label>
 					<input type="text" onChange={(event) => setNickname(event.target.value)} />

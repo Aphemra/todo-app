@@ -71,16 +71,12 @@ export async function checkOffTask(requestBody) {
 // DELETEs
 
 export async function deleteTask(requestBody) {
-	return api
-		.delete(
-			"/tasks",
-			{ task: requestBody.task.id },
-			{
-				headers: {
-					Authorization: `Bearer ${requestBody.token}`,
-				},
-			}
-		)
+	return api({
+		method: "delete",
+		url: "/tasks",
+		data: { task: requestBody.task.id },
+		headers: { Authorization: `Bearer ${requestBody.token}` },
+	})
 		.then((response) => response.data)
 		.catch((error) => console.log(error));
 }

@@ -21,10 +21,12 @@ export function TaskList() {
 
 	return (
 		<div>
+			<h2>Add Task</h2>
 			<form onSubmit={handleAddTask}>
 				<input onChange={(event) => setContent(event.target.value)} type="text"></input>
 				<input type="submit"></input>
 			</form>
+			<h2>Tasks</h2>
 			{tasks.length > 0
 				? tasks.map((task, index) => {
 						return <Task key={task.id} task={task} index={index} setTasks={setTasks} />;

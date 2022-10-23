@@ -6,7 +6,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<Login />
-			<TaskList />;
+			<TaskList />
 		</UserProvider>
 	);
 }

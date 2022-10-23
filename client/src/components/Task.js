@@ -11,9 +11,8 @@ export function Task({ task, index, setTasks }) {
 	};
 
 	const handleDeleteTask = async () => {
-		// await deleteTask({ task, token }).then((data) => setTasks((previous) => previous.filter((task) => task.id !== data.id)));
-		console.log(token);
-		await deleteTask({ task, token });
+		await deleteTask({ task, token }).then((data) => setTasks((previous) => previous.filter((task) => task.id !== data.id)));
+		// await deleteTask({ task, token }).then((data) => console.log(data));
 	};
 
 	return (
