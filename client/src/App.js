@@ -1,16 +1,12 @@
 import { Login } from "./components/Login";
 import { TaskList } from "./components/TaskList";
-import useLocalState from "./hooks/useLocalState";
+import { UserProvider } from "./contexts/TokenContext";
 
-function App() {
-	const [token, setToken] = useLocalState("token");
-
+export default function App() {
 	return (
-		<>
-			<Login token={token} setToken={setToken} />
-			<TaskList token={token} />;
-		</>
+		<UserProvider>
+			<Login />
+			<TaskList />;
+		</UserProvider>
 	);
 }
-
-export default App;

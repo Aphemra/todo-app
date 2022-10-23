@@ -1,31 +1,15 @@
-import axios from "axios";
 import { useState } from "react";
+import { useToken, useUpdateToken } from "../contexts/TokenContext";
+import useLocalState from "../hooks/useLocalState";
+import { login } from "../services/api";
 
-// async function login(credentials) {
-// 	return fetch(`${process.env.REACT_APP_SERVER_URL}/account/login`, {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(credentials),
-// 	}).then((data) => data.json());
-// }
-
-async function login(credentials) {
-	return axios
-		.post(`${process.env.REACT_APP_SERVER_URL}/account/login`, credentials, {
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-		.then((response) => response.data);
-}
-
-export function Login({ token, setToken }) {
-	const [nickname, setNickname] = useState();
+export function Login() {
+	const [nickname, setNickname] = useLocalState("nickname");
 	const [password, setPassword] = useState();
+	const token = useToken();
+	const setToken = useUpdateToken();
 
-	const handleSubmit = async (event) => {
+	const handleLogIn = async (event) => {
 		event.preventDefault();
 		const token = await login({
 			nickname,
@@ -34,10 +18,15 @@ export function Login({ token, setToken }) {
 		setToken(token?.token || null);
 	};
 
+	const handleLogOut = () => {
+		setToken(null);
+		setNickname(null);
+	};
+
 	return (
 		<div>
-			<h1>{token ? `Loggied in as ${nickname}.` : "Logged out."}</h1>
-			<form onSubmit={handleSubmit}>
+			<h1>{token ? `Logged in as ${nickname}.` : "Logged out."}</h1>
+			<form onSubmit={handleLogIn}>
 				<div>
 					<label>Username: </label>
 					<input type="text" onChange={(event) => setNickname(event.target.value)} />
@@ -50,7 +39,7 @@ export function Login({ token, setToken }) {
 					<input type="submit" />
 				</div>
 			</form>
-			<button type="button" onClick={() => setToken(null)}>
+			<button type="button" onClick={handleLogOut}>
 				Logout
 			</button>
 		</div>

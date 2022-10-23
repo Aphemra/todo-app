@@ -1,28 +1,19 @@
-import axios from "axios";
 import { useState } from "react";
+import { useToken } from "../contexts/TokenContext";
+import { checkOffTask, deleteTask } from "../services/api";
 
-async function checkTask(options) {
-	return axios
-		.put(
-			`${process.env.REACT_APP_SERVER_URL}/tasks`,
-			{ taskId: options.task.id },
-			{
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${options.token}`,
-				},
-			}
-		)
-		.then((response) => response.data)
-		.catch((error) => console.log(error));
-}
-
-export function Task({ task, index, token }) {
+export function Task({ task, index, setTasks }) {
 	const [complete, setComplete] = useState(task.done);
+	const token = useToken();
 
-	const handleClick = async (event) => {
-		const done = await checkTask({ task, token });
-		setComplete(done.done);
+	const handleStatusToggle = async () => {
+		await checkOffTask({ task, token }).then((data) => setComplete(data.done));
+	};
+
+	const handleDeleteTask = async () => {
+		// await deleteTask({ task, token }).then((data) => setTasks((previous) => previous.filter((task) => task.id !== data.id)));
+		console.log(token);
+		await deleteTask({ task, token });
 	};
 
 	return (
@@ -30,8 +21,11 @@ export function Task({ task, index, token }) {
 			<h3 style={{ marginBottom: "0px", paddingBottom: "0px" }}>{`Task ${index + 1}`}</h3>
 			<p style={{ marginTop: "0px", marginBottom: "0px", fontSize: "24px" }}>{task.content}</p>
 			<p style={{ fontSize: "16px" }}>{complete ? "Task Complete" : "Task Incomplete"}</p>
-			<button type="button" onClick={handleClick}>
+			<button type="button" onClick={handleStatusToggle}>
 				{complete ? "Uncomplete Task" : "Complete Task"}
+			</button>
+			<button type="button" onClick={handleDeleteTask}>
+				Delete Task
 			</button>
 			<hr />
 		</div>
