@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&display=swap");
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	font-family: "Open Sans", sans-serif;
+}
+
+:root {
+	--highlight: rgb(141, 136, 221, 0.8);
+	--highlight-alpha: rgba(141, 136, 221, 0.5);
+	--highlight-dark: rgb(96, 92, 161, 0.5);
+}
+
+.hide,
+.tab-group.hide {
+	display: none;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.app {
+	padding: 2rem;
+	background-color: rgb(35, 39, 42);
+	height: 100vh;
+	background-image: url("/src/images/bg.png");
+	background-size: 100vw;
+}
+
+.tab-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	width: 18rem;
+	padding-top: 12rem;
+}
+
+.tab-nav {
+	display: flex;
+	width: 100%;
+}
+
+.tab {
+	padding: 0.25rem 0.5rem;
+	border: 2px solid black;
+	font-size: 0.75rem;
+	width: 9rem;
+	text-align: center;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+	background-color: rgba(189, 189, 189, 0.09);
+	color: white;
+}
+
+.tab.active {
+	background-color: var(--highlight-alpha);
+	color: white;
+}
+
+.tab:hover {
+	background-color: var(--highlight);
+	color: white;
+}
+
+.tab:active {
+	background-color: var(--highlight-dark);
+	color: white;
+}
+
+.tab.one {
+	border-top-left-radius: 0.5rem;
+	border-right: none;
+}
+
+.tab.two {
+	border-top-right-radius: 0.5rem;
+}
+
+.tab-content {
+	width: 100%;
+	padding: 1rem;
+	border: 2px solid black;
+	border-top: none;
+	background-color: rgba(189, 189, 189, 0.09);
+	color: white;
+}
+
+.tab-content .title {
+	font-size: 1.25rem;
+	text-align: center;
+	padding-bottom: 0.5rem;
+}
+
+.tab-content input {
+	font-size: 1rem;
+	background-color: rgb(35, 39, 42);
+	color: white;
+	margin-bottom: 0.25rem;
+	padding: 0.25rem 0.5rem;
+}
+
+.tab-content input[type="text"],
+.tab-content input[type="password"] {
+	border: none;
+	outline: none;
+}
+
+.tab-content input[type="text"]:focus,
+.tab-content input[type="password"]:focus {
+	outline: 1px solid var(--highlight);
+}
+
+.tab-content label {
+	font-size: 0.55rem;
+}
+
+.tab-content .submit {
+	padding-top: 1rem;
+	text-align: center;
+}
+
+.submit input {
+	width: 8rem;
+	font-size: 1rem;
+	border: 2px solid white;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.submit input:hover {
+	background-color: var(--highlight);
+}
+
+.submit input:active {
+	background-color: var(--highlight-dark);
+}
+
+.username,
+.password {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
+.username label,
+.password label {
+	position: absolute;
+	bottom: 2.1rem;
+	left: 1.45rem;
+}
+
+.username input,
+.password input {
+	width: 13rem;
+}
+
+.welcome-msg {
+	color: white;
+}
+
+.task-form {
+	color: white;
+}
+
+.tasks {
+	color: white;
+}

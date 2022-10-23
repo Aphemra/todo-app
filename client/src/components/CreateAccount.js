@@ -30,21 +30,21 @@ export function CreateAccount({ setActiveUser, nickname, setNickname, password, 
 	}
 
 	return (
-		<div>
-			<h2>Create New Account</h2>
+		<>
+			<h2 className="title">Create New Account</h2>
 			<form onSubmit={handleCreateAccount}>
-				<div>
+				<div className="label username">
 					<label>Username: </label>
 					<input ref={usernameInput} type="text" onChange={(event) => setNickname(event.target.value)} />
 				</div>
-				<div>
+				<div className="label password">
 					<label>Password: </label>
 					<input ref={passwordInput} type="password" onChange={(event) => setPassword(event.target.value)} />
 				</div>
-				<div>
-					<input type="submit" />
+				<div className="submit">
+					<input type="submit" value="Create" />
 				</div>
 			</form>
-		</div>
+		</>
 	);
 }

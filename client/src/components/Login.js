@@ -30,21 +30,21 @@ export function Login({ setActiveUser, nickname, setNickname, password, setPassw
 	}
 
 	return (
-		<div>
-			<h2>Log in</h2>
+		<>
+			<h2 className="title">Log in</h2>
 			<form onSubmit={handleLogIn}>
-				<div>
+				<div className="username">
 					<label>Username: </label>
 					<input ref={usernameInput} type="text" onChange={(event) => setNickname(event.target.value)} />
 				</div>
-				<div>
+				<div className="password">
 					<label>Password: </label>
 					<input ref={passwordInput} type="password" onChange={(event) => setPassword(event.target.value)} />
 				</div>
-				<div>
-					<input type="submit" />
+				<div className="submit">
+					<input type="submit" value="Log In" />
 				</div>
 			</form>
-		</div>
+		</>
 	);
 }
