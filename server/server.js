@@ -19,5 +19,7 @@ app.delete("/tasks", require("./routes/DeleteTask"))
 
 app.use(require("./middleware/CatchValidations"))
 
-const PORT = process.env.PORT
-app.listen(PORT)
+module.exports = app
+
+// const PORT = process.env.PORT
+// app.listen(PORT)
