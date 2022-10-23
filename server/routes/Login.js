@@ -16,12 +16,12 @@ module.exports = [
 
 		const found = await db.account.findUnique({
 			where: { nickname },
-			select: { id: true, password: true },
+			select: { id: true, nickname: true, password: true },
 		})
 
 		try {
 			if (found && (await argon2.verify(found.password, password, { secret: Buffer.from(process.env.SECRET) }))) {
-				return res.status(201).json({ id: found.id, token: authToken.generate(found.id) })
+				return res.status(201).json({ id: found.id, nickname: found.nickname, token: authToken.generate(found.id) })
 			} else {
 				throw new Error("Bad credentials")
 			}
