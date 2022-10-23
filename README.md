@@ -4,4 +4,4 @@ This contains the front and backend of a todo app made with React.js and Express
 
 ## Initial Project Setup
 
-1. Follow the directions of the `README.md` files within each of the `server` and `docs` folders.
+1. Follow the directions of the `README.md` files within each of the `server` and `client` folders.
