@@ -1,35 +1,18 @@
-import useLocalState from "../hooks/useLocalState";
 import { useState } from "react";
-import { useToken, useUpdateToken } from "../contexts/TokenContext";
+import { useUpdateActiveUser, useToken } from "../contexts/TokenContext";
 import { CreateAccount } from "./CreateAccount";
 import { Login } from "./Login";
 
 export function TabbedMenu() {
-	const [activeUser, setActiveUser] = useLocalState("activeUser");
-
 	const [nickname, setNickname] = useState();
 	const [password, setPassword] = useState();
 	const [activeTab, setActiveTab] = useState(1);
 
 	const token = useToken();
-	const setToken = useUpdateToken();
-
-	const welcomeMessage = token ? (
-		<h1 className="welcome-msg">
-			Logged in as <span className="capitalize">{activeUser}</span>.
-		</h1>
-	) : (
-		<></>
-	);
-
-	const handleLogOut = () => {
-		setToken(null);
-		setActiveUser(null);
-	};
+	const setActiveUser = useUpdateActiveUser();
 
 	return (
 		<div>
-			{welcomeMessage}
 			<div className={token ? "tab-group hide" : "tab-group"}>
 				<div className="tab-nav">
 					<div className={activeTab === 1 ? "tab one active" : "tab one"} onClick={() => setActiveTab(1)}>
@@ -57,11 +40,6 @@ export function TabbedMenu() {
 						setPassword={setPassword}
 					/>
 				</div>
-			</div>
-			<div className={!token ? "hide" : ""}>
-				<button type="button" onClick={handleLogOut}>
-					Logout
-				</button>
 			</div>
 		</div>
 	);

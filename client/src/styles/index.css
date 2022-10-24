@@ -15,6 +15,7 @@
 	--highlight-alpha: rgba(141, 136, 221, 0.5);
 	--highlight-dark: rgb(96, 92, 161, 0.5);
 	--background: rgb(35, 39, 42);
+	--background-alpha: rgba(189, 189, 189, 0.09);
 }
 
 .hide,
@@ -32,6 +33,32 @@
 	height: 100vh;
 	background-image: url("/src/images/bg.png");
 	background-size: 100vw;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	border: 2px solid var(--background);
+	background-color: var(--background-alpha);
+	border-radius: 0.75rem;
+}
+
+.navbar > div {
+	display: flex;
+	align-items: center;
+}
+
+.welcome-msg {
+	color: white;
+	font-weight: 500;
+	font-size: 0.75rem;
+}
+
+.active-user {
+	color: white;
+	font-weight: 500;
+	font-size: 0.9rem;
 }
 
 .tab-group {
@@ -59,7 +86,7 @@
 	cursor: pointer;
 	-webkit-user-select: none;
 	user-select: none;
-	background-color: rgba(189, 189, 189, 0.09);
+	background-color: var(--background-alpha);
 	color: white;
 }
 
@@ -92,7 +119,7 @@
 	padding: 1rem;
 	border: 2px solid var(--background);
 	border-top: none;
-	background-color: rgba(189, 189, 189, 0.09);
+	background-color: var(--background-alpha);
 	color: white;
 }
 
@@ -103,10 +130,18 @@
 }
 
 .tab-content input {
-	font-size: 1rem;
-	background-color: rgb(35, 39, 42);
-	color: white;
 	margin-bottom: 0.25rem;
+	font-size: 1rem;
+}
+
+.right button {
+	font-size: 0.8rem;
+}
+
+.tab-content input,
+.right button {
+	background-color: var(--background);
+	color: white;
 	padding: 0.25rem 0.5rem;
 }
 
@@ -131,8 +166,12 @@
 }
 
 .submit input {
-	width: 8rem;
 	font-size: 1rem;
+}
+
+.submit input,
+.right button {
+	width: 8rem;
 	border: 2px solid var(--background);
 	border-radius: 0.5rem;
 	cursor: pointer;
@@ -140,11 +179,13 @@
 	user-select: none;
 }
 
-.submit input:hover {
+.submit input:hover,
+.right button:hover {
 	background-color: var(--highlight-alpha);
 }
 
-.submit input:active {
+.submit input:active,
+.right button:active {
 	background-color: var(--highlight-dark);
 }
 
@@ -168,14 +209,46 @@
 	width: 13rem;
 }
 
-.welcome-msg {
-	color: white;
+.task-list {
+	padding: 2rem 0;
 }
 
 .task-form {
+	display: flex;
+	justify-content: space-around;
 	color: white;
 }
 
 .tasks {
+	padding: 1rem;
+	background-color: var(--background-alpha);
+	border: 2px solid var(--background);
+	border-radius: 0.75rem;
+}
+
+.task {
+	position: relative;
+	background-color: var(--background-alpha);
+	border: 2px solid var(--background);
+	border-radius: 0.75rem;
+	margin: 0.5rem 0;
+	padding: 0.5rem 0.75rem;
 	color: white;
+}
+
+.task button {
+	color: white;
+	background-color: var(--background);
+	border: 2px solid var(--background);
+	border-radius: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	font-size: 0.75rem;
+}
+
+.task button:hover {
+	background-color: var(--highlight-alpha);
+}
+
+.task button:active {
+	background-color: var(--highlight-dark);
 }

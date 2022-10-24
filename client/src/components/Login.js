@@ -1,12 +1,13 @@
 import { useRef } from "react";
-import { useUpdateToken } from "../contexts/TokenContext";
+import { useUpdateActiveUser, useUpdateToken } from "../contexts/TokenContext";
 import { login } from "../services/api";
 
-export function Login({ setActiveUser, nickname, setNickname, password, setPassword }) {
+export function Login({ nickname, setNickname, password, setPassword }) {
 	const usernameInput = useRef();
 	const passwordInput = useRef();
 
 	const setToken = useUpdateToken();
+	const setActiveUser = useUpdateActiveUser();
 
 	const handleLogIn = async (event) => {
 		event.preventDefault();
