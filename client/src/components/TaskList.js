@@ -28,18 +28,31 @@ export function TaskList() {
 			<Navbar />
 			<div className={!token ? "hide" : "task-list"}>
 				<div className="task-form">
-					<div>Add Task</div>
-					<form onSubmit={handleAddTask}>
-						<input onChange={(event) => setContent(event.target.value)} type="text"></input>
-						<input type="submit"></input>
-					</form>
+					<div className="left">
+						<div>Add Task</div>
+						<form onSubmit={handleAddTask}>
+							<input
+								className="task-content-input"
+								onChange={(event) => setContent(event.target.value)}
+								type="text"
+							></input>
+							<input type="submit"></input>
+						</form>
+					</div>
+					<div className="right">
+						<div className="task-total">{tasks.length} Tasks</div>
+					</div>
 				</div>
 				<div className="tasks">
-					{tasks.length > 0
-						? tasks.map((task, index) => {
-								return <Task key={task.id} task={task} index={index} setTasks={setTasks} />;
-						  })
-						: "Loading..."}
+					{tasks.length > 0 ? (
+						tasks.map((task) => {
+							return <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />;
+						})
+					) : (
+						<div className="no-tasks-message">
+							{tasks.length > 0 ? "Loading Tasks..." : "No Tasks Found. Why not add some?"}
+						</div>
+					)}
 				</div>
 			</div>
 		</>

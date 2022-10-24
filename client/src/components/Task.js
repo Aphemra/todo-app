@@ -7,23 +7,29 @@ export function Task({ task, setTasks }) {
 	const token = useToken();
 
 	const handleStatusToggle = async () => {
-		await checkOffTask({ task, token }).then((data) => setComplete(data.done));
+		await checkOffTask({ task, token }).then((data) => {
+			setComplete(data.done);
+		});
 	};
 
 	const handleDeleteTask = async () => {
-		await deleteTask({ task, token }).then((data) => setTasks((previous) => previous.filter((task) => task.id !== data.id)));
+		await deleteTask({ task, token }).then((data) => {
+			setTasks((previous) => previous.filter((task) => task.id !== data.id));
+		});
 	};
 
 	return (
 		<div className="task">
-			<div className="status">{complete ? "Complete" : "Incomplete"}</div>
+			<div className={complete ? "status done" : "status not-done"}>{complete ? "Done" : "Not Done"}</div>
 			<div className="content">{task.content}</div>
-			<button type="button" onClick={handleStatusToggle}>
-				Toggle Done
-			</button>
-			<button type="button" onClick={handleDeleteTask}>
-				Delete Task
-			</button>
+			<div className="buttons">
+				<button type="button" onClick={handleStatusToggle}>
+					Toggle Done
+				</button>
+				<button type="button" onClick={handleDeleteTask}>
+					Delete Task
+				</button>
+			</div>
 		</div>
 	);
 }
