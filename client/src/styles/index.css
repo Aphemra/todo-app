@@ -214,6 +214,7 @@
 
 .task-list {
 	padding: 1.5rem 0 0 0;
+	margin: 1rem 0 0 0;
 	background-color: var(--background-alpha);
 	border: 2px solid var(--background);
 	border-radius: 0.75rem;
