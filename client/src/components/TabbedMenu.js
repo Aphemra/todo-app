@@ -7,6 +7,7 @@ export function TabbedMenu() {
 	const [nickname, setNickname] = useState();
 	const [password, setPassword] = useState();
 	const [activeTab, setActiveTab] = useState(1);
+	const [loggingIn, setLoggingIn] = useState(false);
 
 	const token = useToken();
 	const setActiveUser = useUpdateActiveUser();
@@ -29,6 +30,8 @@ export function TabbedMenu() {
 						setNickname={setNickname}
 						password={password}
 						setPassword={setPassword}
+						loggingIn={loggingIn}
+						setLoggingIn={setLoggingIn}
 					/>
 				</div>
 				<div className={activeTab === 2 ? "tab-content" : "tab-content hide"}>
@@ -38,6 +41,8 @@ export function TabbedMenu() {
 						setNickname={setNickname}
 						password={password}
 						setPassword={setPassword}
+						loggingIn={loggingIn}
+						setLoggingIn={setLoggingIn}
 					/>
 				</div>
 			</div>
